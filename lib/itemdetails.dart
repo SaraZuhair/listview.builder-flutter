@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'main.dart';
 
@@ -5,12 +7,17 @@ class details extends StatelessWidget {
   String name,image,price;
    details({Key? key, required this.name,required this.image,required this.price}) : super(key: key);
 
+final namecn=TextEditingController();
+final imagecn=TextEditingController();
+final pricecn=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     
-    return Scaffold(
+    return SafeArea(child:
+    Scaffold(
       appBar:AppBar(
+        backgroundColor: Colors.primaries[Random().nextInt(Colors.primaries.length)],
        title: Center(child: Text(name)),
       ),
 
@@ -30,14 +37,16 @@ class details extends StatelessWidget {
 
        const SizedBox(height: 20,),
 
-       ElevatedButton(onPressed:(){
+       ElevatedButton(
+         
+         onPressed:(){
          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> MyHomePage()));
        } , 
        child: const Text("Go Back"))
         
       ],
     ),
-      
+    ),
     );
   }
 }
